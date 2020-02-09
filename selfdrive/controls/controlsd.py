@@ -152,8 +152,8 @@ def data_sample(CI, CC, sm, can_sock, driver_status, state, mismatch_counter, ca
   if sm.updated['driverMonitoring']:
     driver_status.get_pose(sm['driverMonitoring'], cal_rpy, CS.vEgo, enabled)
 
-#  if driver_status.terminal_alert_cnt >= MAX_TERMINAL_ALERTS or driver_status.terminal_time >= MAX_TERMINAL_DURATION:
-#    events.append(create_event("tooDistracted", [ET.NO_ENTRY]))
+  if driver_status.terminal_alert_cnt >= MAX_TERMINAL_ALERTS or driver_status.terminal_time >= MAX_TERMINAL_DURATION:
+    events.append(create_event("tooDistracted", [ET.NO_ENTRY]))
 
   return CS, events, cal_perc, mismatch_counter, can_error_counter
 
